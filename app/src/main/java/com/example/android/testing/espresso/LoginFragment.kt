@@ -46,7 +46,11 @@ class LoginFragment : Fragment() {
     fun logIn () {
         loginButton.isEnabled = false
         //someIO()
-        viewmodel.logIn()
+        if (true) {
+            viewmodel.logIn()
+        } else {
+            viewmodel.logIn()
+        }
 
         val intent = Intent(context, GitActivity::class.java).apply {  }
         startActivity(intent)

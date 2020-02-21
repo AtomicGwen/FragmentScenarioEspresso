@@ -19,8 +19,6 @@ public class GitActivity extends Activity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    final TextView nameView = findViewById(R.id.name);
-
     Retrofit retrofit = new Retrofit.Builder()
         .baseUrl("https://api.github.com/")
         .addConverterFactory(MoshiConverterFactory.create())
@@ -32,13 +30,12 @@ public class GitActivity extends Activity {
       @Override
       public void onResponse(Call<User> call, Response<User> response) {
         User user = response.body();
-        nameView.setText(user.name);
+        if (user != null) {
+        }
       }
 
       @Override
-      public void onFailure(Call<User> call, Throwable t) {
-        nameView.setText(t.getMessage());
-      }
+      public void onFailure(Call<User> call, Throwable t) { }
     });
   }
 }
