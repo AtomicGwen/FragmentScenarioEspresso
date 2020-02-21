@@ -68,4 +68,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.1.0'
 
     testImplementation "org.robolectric:shadows-supportv4:3.8"
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-moshi:2.3.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.9.1'
 }

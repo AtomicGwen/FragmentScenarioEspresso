@@ -3,6 +3,7 @@ package com.example.android.testing.espresso
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.telecom.Call
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -44,10 +45,10 @@ class LoginFragment : Fragment() {
 
     fun logIn () {
         loginButton.isEnabled = false
-        someIO()
+        //someIO()
         viewmodel.logIn()
 
-        val intent = Intent(context, LoggedInActivity::class.java).apply {  }
+        val intent = Intent(context, GitActivity::class.java).apply {  }
         startActivity(intent)
     }
 

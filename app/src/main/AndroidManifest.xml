@@ -11,7 +11,8 @@
             android:name="com.example.android.testing.espresso.LoggedInActivity"
             android:label="@string/title_activity_logged_in"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name="com.example.android.testing.espresso.FragmentScenarioSample.MainActivity2" />
+        <activity
+            android:name="com.example.android.testing.espresso.GitActivity"></activity>
         <activity
             android:name="com.example.android.testing.espresso.MainActivity"
             android:label="@string/title_activity_main"
