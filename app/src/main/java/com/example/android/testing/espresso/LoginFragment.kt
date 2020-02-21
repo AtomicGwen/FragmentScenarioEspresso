@@ -9,8 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.android.testing.espresso.fragmentscenario.R
 import kotlinx.android.synthetic.main.fragment_sample.*
-import java.io.File
-import java.io.FileOutputStream
+import java.io.*
+
+
 
 
 class LoginFragment : Fragment() {
@@ -29,7 +30,7 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sample, container, false)
+        return inflater.inflate(com.example.android.testing.espresso.fragmentscenario.R.layout.fragment_sample, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -51,10 +52,27 @@ class LoginFragment : Fragment() {
     }
 
     fun someIO () {
+        // Commented out code
+        // System.out.println("Hello")
+        // System.out.println("World")
+
         val path = context?.filesDir
-        val letDirectory = File(path, "LET")
-        letDirectory.mkdirs()
-        val file = File(letDirectory, "File.txt")
-        file.appendText("record goes here")
+        val file = File(path, "File.txt")
+
+        file.appendText("Text here")
+//        File("File.txt").useLines { lines -> lines.forEach { }}
+
+        try {
+            var inputStream = context?.openFileInput("File.txt")
+            val inputStreamReader = InputStreamReader(inputStream)
+            val bufferedReader = BufferedReader(inputStreamReader)
+            val receiveString = bufferedReader.readLine()
+
+            inputStream?.close();
+        } catch (e: FileNotFoundException) {
+            // I am error
+        } catch (e: IOException) {
+            // I am error
+        }
     }
 }
