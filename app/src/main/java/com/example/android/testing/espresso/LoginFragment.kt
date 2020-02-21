@@ -9,12 +9,21 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.android.testing.espresso.fragmentscenario.R
 import kotlinx.android.synthetic.main.fragment_sample.*
+import java.io.File
+import java.io.FileOutputStream
 
 
 class LoginFragment : Fragment() {
 
     var viewmodel: LoginViewModel = LoginViewModel()
 
+//    companion object Factory{
+//        fun getInstanceWith(viewModel: LoginViewModel): LoginFragment{
+//            val instance = LoginFragment()
+//            instance.viewmodel = viewModel
+//            return instance
+//        }
+//    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,10 +43,18 @@ class LoginFragment : Fragment() {
 
     fun logIn () {
         loginButton.isEnabled = false
+        someIO()
         viewmodel.logIn()
 
         val intent = Intent(context, LoggedInActivity::class.java).apply {  }
         startActivity(intent)
     }
 
+    fun someIO () {
+        val path = context?.filesDir
+        val letDirectory = File(path, "LET")
+        letDirectory.mkdirs()
+        val file = File(letDirectory, "File.txt")
+        file.appendText("record goes here")
+    }
 }
