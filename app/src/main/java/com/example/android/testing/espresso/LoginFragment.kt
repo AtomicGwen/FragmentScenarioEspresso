@@ -15,13 +15,6 @@ class LoginFragment : Fragment() {
 
     var viewmodel: LoginViewModel = LoginViewModel()
 
-//    companion object Factory{
-//        fun getInstanceWith(viewModel: LoginViewModel): LoginFragment{
-//            val instance = LoginFragment()
-//            instance.viewmodel = viewModel
-//            return instance
-//        }
-//    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
