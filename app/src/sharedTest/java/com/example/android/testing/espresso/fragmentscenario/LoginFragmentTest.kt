@@ -39,10 +39,6 @@ class LoginFragmentTest {
         val idlingResource = IntentServiceIdlingResource()
         IdlingRegistry.getInstance().register(idlingResource)
 
-//        val viewModel = LoginViewModel()
-//        val fragment = LoginFragment.getInstanceWith(viewModel);
-
-//        SupportFragmentTestUtil.startVisibleFragment(fragment)
         launchFragmentInContainer<LoginFragment>()
 
         // 'Login'
@@ -50,8 +46,6 @@ class LoginFragmentTest {
         onView(withId(R.id.passwordText)).perform(typeText("World"), closeSoftKeyboard())
         onView(withId(R.id.loginButton)).perform(click())
 
-        // Wait 3 secs then screen change
-//        Thread.sleep(3500)
         onView(withId(R.id.loggedInText)).check(matches(withText("Logged in!")))
 
         IdlingRegistry.getInstance().unregister(idlingResource)
