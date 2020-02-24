@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'jacoco'
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -18,6 +20,10 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            testCoverageEnabled false
+        }
+        debug {
+            testCoverageEnabled true
         }
     }
     // share the unified tests
@@ -32,6 +38,12 @@ android {
     testOptions {
         // include the android resources in local tests. See http://robolectric.org/migrating/#migrating-to-40
         unitTests.includeAndroidResources = true
+
+        unitTests.all {
+            jacoco {
+                includeNoLocationClasses = true
+            }
+        }
     }
 }
 
@@ -42,7 +54,6 @@ dependencies {
     implementation 'androidx.core:core-ktx:' + rootProject.androidxCoreVersion
     implementation 'androidx.fragment:fragment-ktx:' + rootProject.androidxFragmentVersion
 
-    // TODO: ideally this would only be present in test scope
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
@@ -68,7 +79,4 @@ dependencies {
     implementation 'com.google.android.material:material:1.1.0'
 
     testImplementation "org.robolectric:shadows-supportv4:3.8"
-    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
-    implementation 'com.squareup.retrofit2:converter-moshi:2.3.0'
-    implementation 'com.squareup.okhttp3:okhttp:3.9.1'
 }
